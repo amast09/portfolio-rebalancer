@@ -77,7 +77,14 @@ const App: React.FC = () => {
         This tool is intended to determine the buys/sells required to re-balance
         a portfolio to a targeted asset allocation. You can learn more about
         what an asset allocation is{" "}
-        <a href="https://www.bogleheads.org/wiki/Asset_allocation">here</a>.
+        <a
+          href="https://www.bogleheads.org/wiki/Asset_allocation"
+          target="_blank"
+          rel="noreferrer"
+        >
+          here
+        </a>
+        .
       </p>
       <hr />
       <form className="asset-form" onSubmit={onTickerAdd}>
@@ -112,7 +119,7 @@ const App: React.FC = () => {
               onChange={onBalanceChange}
             />
             <span className="icon is-small is-left">
-              <i className="fas fa-dollar-sign"></i>
+              <i className="fas fa-dollar-sign" />
             </span>
           </div>
         </div>
@@ -132,7 +139,7 @@ const App: React.FC = () => {
               onChange={onTargetAllocationChange}
             />
             <span className="icon is-small is-right">
-              <i className="fas fa-percentage"></i>
+              <i className="fas fa-percentage" />
             </span>
           </div>
         </div>
@@ -215,6 +222,8 @@ const App: React.FC = () => {
       <a
         className="source-code-link"
         href="https://github.com/amast09/portfolio-rebalancer"
+        target="_blank"
+        rel="noreferrer"
       >
         Source Code
       </a>
