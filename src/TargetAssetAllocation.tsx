@@ -1,87 +1,108 @@
-import React from "react";
+import React, { FormEvent, FormEventHandler } from "react";
 
-interface TickerWithAllocation {
+interface Asset {
   readonly ticker: string;
-  readonly allocation: string;
+  readonly balance: string;
+  readonly targetAllocation: string;
 }
 
-type AssetAllocation = TickerWithAllocation[];
+type AssetAllocation = Asset[];
 
 const TargetAssetAllocation: React.FC = () => {
   const [assetAllocation, setAssetAllocation] = React.useState<AssetAllocation>(
     []
   );
+  const [tickerInputValue, setTickerInputValue] = React.useState<string>("");
+  const [
+    targetAllocationInputValue,
+    setTargetAllocationInputValue,
+  ] = React.useState<string>("");
+  const [balanceInputValue, setBalanceInputValue] = React.useState<string>("");
 
-  const onAllocationChangeForTicker = (tickerToUpdate: string) => (
+  const onTargetAllocationChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ): void => {
-    setAssetAllocation(
-      assetAllocation.map(({ ticker, allocation }) => ({
-        ticker,
-        allocation: tickerToUpdate === ticker ? e.target.value : allocation,
-      }))
-    );
+    setTargetAllocationInputValue(e.target.value);
   };
 
-  const onTickerChangeForCurrentTicker = (
-    params: Readonly<{
-      currentTicker: string;
-      allocation: string;
-    }>
-  ) => (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setAssetAllocation(
-      assetAllocation.reduce<AssetAllocation>(
-        (acc: AssetAllocation, tickerWithAllocation: TickerWithAllocation) =>
-          params.currentTicker === tickerWithAllocation.ticker
-            ? [
-                ...acc,
-                {
-                  ticker: e.target.value,
-                  allocation: tickerWithAllocation.allocation,
-                },
-              ]
-            : acc,
-        []
-      )
-    );
+  const onTickerChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setTickerInputValue(e.target.value);
   };
 
-  const addAssetAllocation = () => {
-    setAssetAllocation([
-      ...assetAllocation.filter(
-        (tickerWithAllocation) => tickerWithAllocation.allocation !== ""
-      ),
-      {
-        allocation: "",
-        ticker: "",
-      },
-    ]);
+  const onBalanceChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setBalanceInputValue(e.target.value);
+  };
+
+  const onTickerAdd: FormEventHandler = (e: FormEvent) => {
+    e.preventDefault();
+
+    if (tickerInputValue && balanceInputValue && targetAllocationInputValue) {
+      setAssetAllocation([
+        ...assetAllocation,
+        {
+          ticker: tickerInputValue,
+          balance: balanceInputValue,
+          targetAllocation: targetAllocationInputValue,
+        },
+      ]);
+
+      setTargetAllocationInputValue("");
+      setTickerInputValue("");
+      setBalanceInputValue("");
+    }
+  };
+
+  const onRemoveAsset = (ticker: string) => () => {
+    setAssetAllocation(assetAllocation.filter((a) => a.ticker !== ticker));
   };
 
   return (
     <>
-      <button onClick={addAssetAllocation}>+</button>
-      {assetAllocation.map(({ ticker, allocation }) => {
-        const onAllocationChange = onAllocationChangeForTicker(ticker);
-        const onTickerChange = onTickerChangeForCurrentTicker({
-          currentTicker: ticker,
-          allocation,
-        });
-
-        return (
-          <div>
-            <label>Ticker:</label>
-            <input value={ticker} onChange={onTickerChange} />
-            <label>Allocation:</label>
-            <input
-              onChange={onAllocationChange}
-              value={allocation}
-              type="number"
-            />
-          </div>
-        );
-      })}
+      <form onSubmit={onTickerAdd}>
+        <label htmlFor="ticker">Ticker:</label>
+        <input
+          id="ticker"
+          name="ticker"
+          value={tickerInputValue}
+          onChange={onTickerChange}
+        />
+        <label htmlFor="allocation">Allocation:</label>
+        <input
+          id="allocation"
+          name="allocation"
+          onChange={onTargetAllocationChange}
+          value={targetAllocationInputValue}
+          type="number"
+        />
+        <label htmlFor="balance">Current Balance:</label>
+        <input
+          id="balance"
+          name="balance"
+          onChange={onBalanceChange}
+          value={balanceInputValue}
+          type="number"
+        />
+        <button onClick={onTickerAdd}>Add Ticker</button>
+      </form>
+      <hr />
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(4, auto)" }}>
+        <div>Ticker</div>
+        <div>Balance</div>
+        <div>Allocation</div>
+        <div />
+        {assetAllocation.map(({ ticker, balance, targetAllocation }) => (
+          <>
+            <div>{ticker}</div>
+            <div>{balance}</div>
+            <div>{targetAllocation}</div>
+            <button type="button" onClick={onRemoveAsset(ticker)}>
+              Remove
+            </button>
+          </>
+        ))}
+      </div>
     </>
   );
 };
+
 export default TargetAssetAllocation;
