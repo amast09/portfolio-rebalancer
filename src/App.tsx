@@ -73,6 +73,12 @@ const App: React.FC = () => {
       <header>
         <h1 className="title">Portfolio Re-balancer!</h1>
       </header>
+      <p className="py-2">
+        This tool is intended to determine the buys/sells required to re-balance
+        a portfolio to a targeted asset allocation. You can learn more about
+        what an asset allocation is{" "}
+        <a href="https://www.bogleheads.org/wiki/Asset_allocation">here</a>.
+      </p>
       <hr />
       <form className="asset-form" onSubmit={onTickerAdd}>
         <div className="field">
@@ -93,9 +99,9 @@ const App: React.FC = () => {
 
         <div className="field">
           <label className="label" htmlFor="balance">
-            Current Balance
+            Current Balance in Portfolio
           </label>
-          <div className="control">
+          <div className="control has-icons-left">
             <input
               id="balance"
               name="balance"
@@ -105,14 +111,17 @@ const App: React.FC = () => {
               value={balanceInputValue}
               onChange={onBalanceChange}
             />
+            <span className="icon is-small is-left">
+              <i className="fas fa-dollar-sign"></i>
+            </span>
           </div>
         </div>
 
         <div className="field">
           <label className="label" htmlFor="allocation">
-            Target Allocation
+            Target Allocation for Asset
           </label>
-          <div className="control">
+          <div className="control has-icons-right">
             <input
               id="allocation"
               name="allocation"
@@ -122,15 +131,18 @@ const App: React.FC = () => {
               value={targetAllocationInputValue}
               onChange={onTargetAllocationChange}
             />
+            <span className="icon is-small is-right">
+              <i className="fas fa-percentage"></i>
+            </span>
           </div>
         </div>
         <button className="button" onClick={onTickerAdd}>
           Add Ticker
         </button>
       </form>
-      <hr />
       {userHasAddedAssets && (
         <>
+          <hr />
           <div className="assets-table">
             <h4 className="is-size-5 has-text-weight-bold">Ticker</h4>
             <h4 className="is-size-5 has-text-weight-bold">Balance</h4>
@@ -175,32 +187,31 @@ const App: React.FC = () => {
               );
             })}
           </div>
-          <hr />
-          <div className="summary">
-            <div className="summary__element">
-              <p className="has-text-weight-bold">
-                Remaining in Target Allocation:{" "}
-              </p>
-              <span
-                className={
-                  remainingAllocation < 0
-                    ? "has-text-danger"
-                    : remainingAllocation === 0
-                    ? "has-text-success"
-                    : "has-text-dark"
-                }
-              >
-                {remainingAllocation}
-              </span>
-            </div>
-            <div className="summary__element">
-              <p className="has-text-weight-bold">Total Assets: </p>
-              <span>${totalAssets}</span>
-            </div>
-          </div>
         </>
       )}
-      {!userHasAddedAssets && <div>Add your assets using the form above</div>}
+      <hr />
+      <div className="summary">
+        <div className="summary__element">
+          <p className="has-text-weight-bold">
+            Remaining in Target Allocation:{" "}
+          </p>
+          <span
+            className={
+              remainingAllocation < 0
+                ? "has-text-danger"
+                : remainingAllocation === 0
+                ? "has-text-success"
+                : "has-text-dark"
+            }
+          >
+            {remainingAllocation}
+          </span>
+        </div>
+        <div className="summary__element">
+          <p className="has-text-weight-bold">Total Assets: </p>
+          <span>${totalAssets}</span>
+        </div>
+      </div>
       <a
         className="source-code-link"
         href="https://github.com/amast09/portfolio-rebalancer"

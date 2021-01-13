@@ -4,6 +4,10 @@
     overflow: hidden;
 }
 
+.asset-form .field {
+    max-width: 800px;
+}
+
 .assets-table {
     display: grid;
     grid-template-columns: repeat(6, auto);
