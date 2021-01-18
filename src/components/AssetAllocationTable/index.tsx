@@ -26,11 +26,11 @@ const AssetAllocationTable: React.FC<AssetAllocationTableProps> = ({
       <div />
       {assetAllocation.map((asset) => {
         const { ticker, balance, targetAllocation } = asset;
-        const assetAllocationPercentage = calculateAssetAllocationPercentage(
-          asset,
-          totalAssets
-        );
+        const assetAllocationPercentage = Number(
+          calculateAssetAllocationPercentage(asset, totalAssets)
+        ).toFixed(2);
         const adjustment = calculateAllocationAdjustment(asset, totalAssets);
+        const adjustmentToDisplay = Number(Math.abs(adjustment)).toFixed(2);
 
         return (
           <>
@@ -47,7 +47,7 @@ const AssetAllocationTable: React.FC<AssetAllocationTableProps> = ({
                 adjustment < 0 ? "has-text-danger" : "has-text-success"
               }`}
             >
-              {adjustment < 0 ? "-" : "+"}${Math.abs(adjustment)}
+              {adjustment < 0 ? "-" : "+"}${adjustmentToDisplay}
             </div>
             <button
               type="button"
