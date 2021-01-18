@@ -1,8 +1,8 @@
 .asset-allocation-summary {
-    width: 300px;
+  width: 300px;
 }
 
 .asset-allocation-summary__element {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }

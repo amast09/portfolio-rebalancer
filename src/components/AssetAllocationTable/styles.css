@@ -1,16 +1,16 @@
 .assets-table {
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    row-gap: 10px;
-    overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  row-gap: 10px;
+  overflow: auto;
 }
 
 .assets-table h4 {
-    white-space: nowrap;
-    margin: 0 15px 0 0;
+  white-space: nowrap;
+  margin: 0 15px 0 0;
 }
 
 .assets-table__asset-value {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }

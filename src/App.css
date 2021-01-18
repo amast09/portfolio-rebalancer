@@ -1,11 +1,10 @@
 .app {
-    padding: 20px;
-    overflow: hidden;
+  padding: 20px;
+  overflow: hidden;
 }
 
 .source-code-link {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
 }
-
