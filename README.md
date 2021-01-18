@@ -1,4 +1,4 @@
-[Visit the app here](https://portfolio-rebalancer.vercel.app/)
+[Visit the app here](https://portfoliorebalancer.app/)
 
 ## Available Scripts
 
