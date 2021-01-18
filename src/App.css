@@ -1,42 +1,6 @@
 .app {
     padding: 20px;
-    padding-bottom: 20px;
     overflow: hidden;
-}
-
-.asset-form .field {
-    max-width: 800px;
-}
-
-.assets-table {
-    display: grid;
-    grid-template-columns: repeat(6, auto);
-    row-gap: 10px;
-    overflow: auto;
-}
-
-.assets-table h4 {
-    white-space: nowrap;
-    margin: 0 15px 0 0;
-}
-
-.asset-value {
-    display: flex;
-    align-items: center;
-}
-
-.asset-form__bottom-row {
-    display: flex;
-    justify-content: space-between;
-}
-
-.summary {
-    width: 300px;
-}
-
-.summary__element {
-    display: flex;
-    justify-content: space-between;
 }
 
 .source-code-link {
