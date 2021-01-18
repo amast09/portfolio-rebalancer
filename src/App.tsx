@@ -16,7 +16,7 @@ const App: React.FC = () => {
     setAssetAllocation([...assetAllocation, newAsset]);
   };
 
-  const onRemoveAsset = (ticker: string) => () => {
+  const onRemoveAsset = (ticker: string) => {
     setAssetAllocation(assetAllocation.filter((a) => a.ticker !== ticker));
   };
 
