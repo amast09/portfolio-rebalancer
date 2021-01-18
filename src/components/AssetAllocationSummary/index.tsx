@@ -1,7 +1,7 @@
 import AssetAllocation from "../../types/AssetAllocation.type";
 import React from "react";
 import calculateTotalAssets from "../../selectors/calculateTotalAssets";
-import calculateRemainingAssets from "../../selectors/calculateRemainingAssets";
+import calculateRemainingAllocations from "../../selectors/calculateRemainingAllocations";
 import "./styles.css";
 
 interface AssetAllocationSummaryProps {
@@ -22,7 +22,7 @@ const AssetAllocationSummary: React.FC<AssetAllocationSummaryProps> = ({
   assetAllocation,
 }) => {
   const totalAssets = calculateTotalAssets(assetAllocation);
-  const remainingAllocation = calculateRemainingAssets(assetAllocation);
+  const remainingAllocation = calculateRemainingAllocations(assetAllocation);
 
   return (
     <div className="asset-allocation-summary">
