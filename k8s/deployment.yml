@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pr
+  labels:
+    app: pr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pr
+  template:
+    metadata:
+      labels:
+        app: pr
+    spec:
+      containers:
+      - image: httpd
+        imagePullPolicy: Always
+        name: pr
+        ports:
+        - containerPort: 80
+          protocol: TCP
