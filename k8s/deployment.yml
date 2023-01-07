@@ -15,9 +15,9 @@ spec:
         app: pr
     spec:
       containers:
-      - image: httpd
-        imagePullPolicy: Always
-        name: pr
-        ports:
-        - containerPort: 80
-          protocol: TCP
+        - image: httpd
+          imagePullPolicy: Always
+          name: pr
+          ports:
+            - containerPort: 80
+              protocol: TCP
