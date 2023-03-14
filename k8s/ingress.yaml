@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: local-ingress
+spec:
+  ingressClassName: local-nginx
+  rules:
+    - host: portfolio-rebalancer.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: pr
+                port:
+                  number: 80
