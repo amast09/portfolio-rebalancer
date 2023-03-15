@@ -8,8 +8,10 @@ interface AssetFormProps {
 
 const AssetForm: React.FC<AssetFormProps> = ({ onSubmit }) => {
   const [tickerInputValue, setTickerInputValue] = React.useState<string>("");
-  const [targetAllocationInputValue, setTargetAllocationInputValue] =
-    React.useState<string>("");
+  const [
+    targetAllocationInputValue,
+    setTargetAllocationInputValue,
+  ] = React.useState<string>("");
   const [balanceInputValue, setBalanceInputValue] = React.useState<string>("");
 
   const onTargetAllocationChange = (
