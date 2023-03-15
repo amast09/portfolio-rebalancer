@@ -6,7 +6,8 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: pr
+    matchLabels:
+      app: pr
   ports:
     - protocol: TCP
       port: 80
