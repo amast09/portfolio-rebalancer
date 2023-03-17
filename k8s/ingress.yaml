@@ -4,12 +4,16 @@ metadata:
   name: pr
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - portfolio-rebalancer.localhost
+      secretName: portfolio-rebalancer-secret
   rules:
     - host: portfolio-rebalancer.localhost
       http:
         paths:
           - path: /
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
                 name: pr
