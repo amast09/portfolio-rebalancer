@@ -1,12 +1,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pr
+  name: portfolio-rebalancer-ingress
 spec:
   ingressClassName: nginx
   defaultBackend:
     service:
-      name: pr
+      name: portfolio-rebalancer-service
       port:
         number: 80
   rules:
@@ -17,6 +17,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: pr
+                name: portfolio-rebalancer-service
                 port:
                   number: 80

@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pr
+  name: portfolio-rebalancer-deployment
   labels:
-    app: pr
+    app: portfolio-rebalancer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: pr
+      app: portfolio-rebalancer
   template:
     metadata:
       labels:
-        app: pr
+        app: portfolio-rebalancer
     spec:
       containers:
         - image: httpd
           imagePullPolicy: Always
-          name: pr
+          name: portfolio-rebalancer
           ports:
             - containerPort: 80
               protocol: TCP
