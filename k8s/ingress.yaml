@@ -5,10 +5,10 @@ metadata:
 spec:
   ingressClassName: nginx
   defaultBackend:
-  service:
-    name: pr
-    port:
-      number: 80
+    service:
+      name: pr
+      port:
+        number: 80
   rules:
     - host: localhost
       http:
