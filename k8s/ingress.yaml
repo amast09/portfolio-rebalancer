@@ -10,7 +10,7 @@ spec:
       port:
         number: 80
   rules:
-    - host: localhost
+    - host: portfolio-rebalancer.localhost
       http:
         paths:
           - path: /
