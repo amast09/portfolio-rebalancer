@@ -6,9 +6,8 @@ describe("calculateRemainingAllocations", () => {
     const assetAllocation: AssetAllocation = [];
     const expectedRemainingAssets: number = 100;
 
-    const actualRemainingAssets = calculateRemainingAllocations(
-      assetAllocation
-    );
+    const actualRemainingAssets =
+      calculateRemainingAllocations(assetAllocation);
 
     expect(actualRemainingAssets).toEqual(expectedRemainingAssets);
   });
@@ -28,9 +27,8 @@ describe("calculateRemainingAllocations", () => {
     ];
     const expectedRemainingAssets: number = 10;
 
-    const actualRemainingAssets = calculateRemainingAllocations(
-      assetAllocation
-    );
+    const actualRemainingAssets =
+      calculateRemainingAllocations(assetAllocation);
 
     expect(actualRemainingAssets).toEqual(expectedRemainingAssets);
   });
@@ -50,9 +48,8 @@ describe("calculateRemainingAllocations", () => {
     ];
     const expectedRemainingAssets: number = 0;
 
-    const actualRemainingAssets = calculateRemainingAllocations(
-      assetAllocation
-    );
+    const actualRemainingAssets =
+      calculateRemainingAllocations(assetAllocation);
 
     expect(actualRemainingAssets).toEqual(expectedRemainingAssets);
   });
@@ -72,9 +69,8 @@ describe("calculateRemainingAllocations", () => {
     ];
     const expectedRemainingAssets: number = -50;
 
-    const actualRemainingAssets = calculateRemainingAllocations(
-      assetAllocation
-    );
+    const actualRemainingAssets =
+      calculateRemainingAllocations(assetAllocation);
 
     expect(actualRemainingAssets).toEqual(expectedRemainingAssets);
   });
