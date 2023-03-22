@@ -7,7 +7,8 @@ spec:
     - portfolio-rebalancer.localhost
   secretName: portfolio-rebalancer-tls
   issuerRef:
-    name: self-signed-issuer
+    kind: ClusterIssuer
+    name: self-signed-cluster-issuer
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
