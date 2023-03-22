@@ -4,7 +4,7 @@ metadata:
   name: portfolio-rebalancer-certificate
 spec:
   dnsNames:
-    - portfolio-rebalancer.localhost
+    - portfolio-rebalancer.app
   secretName: portfolio-rebalancer-tls
   issuerRef:
     kind: ClusterIssuer
@@ -23,10 +23,10 @@ spec:
         number: 80
   tls:
     - hosts:
-        - portfolio-rebalancer.localhost
+        - portfolio-rebalancer.app
       secretName: portfolio-rebalancer-tls
   rules:
-    - host: portfolio-rebalancer.localhost
+    - host: portfolio-rebalancer.app
       http:
         paths:
           - path: /
